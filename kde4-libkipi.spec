@@ -9,6 +9,7 @@ Group:		Libraries
 # From KDE cvs generated using
 # 'cvs://pld/kde/package-kdeapp_snap.sh libkipi kdeextragear-libs-1'
 Source0:	%{name}-%{_snap}.tar.bz2
+# Source0-md5:	82af5427f4a3fe5fb33b3e03ee8e9f38
 URL:		http://extragear.kde.org/apps/kipi.php
 BuildRequires:	autoconf
 BuildRequires:	automake
