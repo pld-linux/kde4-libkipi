@@ -1,15 +1,12 @@
-%define		_snap	040918
 Summary:	KDE Image Plugin Interface libary
 Summary(pl):	Biblioteka interfejsu przetwarzania obrazu w KDE
 Name:		libkipi
-Version:	0.1.0
-Release:	0.%{_snap}1
+Version:	0.1
+Release:	0.1
 License:	LGPL
 Group:		Libraries
-# From KDE cvs generated using
-# 'cvs://pld/kde/package-kdeapp_snap.sh libkipi kdeextragear-libs-1'
-Source0:	%{name}-%{_snap}.tar.bz2
-# Source0-md5:	82af5427f4a3fe5fb33b3e03ee8e9f38
+Source0:	ftp://ftp.kde.org/pub/kde/unstable/apps/KDE3.x/graphics/%{name}-%{version}.tar.bz2
+# Source0-md5:	7268776060b348c21d9dd9936443dca2
 URL:		http://extragear.kde.org/apps/kipi.php
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -39,7 +36,7 @@ Header files for libkipi development.
 Pliki nag³ówkowe dla programistów u¿ywaj±cych libkipi.
 
 %prep
-%setup -q -n %{name}
+%setup -q
 
 %build
 cp -f %{_datadir}/automake/config.sub admin
@@ -47,7 +44,8 @@ export UNSERMAKE=%{_datadir}/unsermake/unsermake
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
-	--with-qt-libraries=%{_libdir}
+	--with-qt-libraries=%{_libdir} \
+	--enable-final
 
 %{__make}
 
@@ -58,11 +56,13 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
+	
+%find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%files
+%files -f %{name}.lang
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_libdir}/lib*.so.?.?.?
 %{_datadir}/apps/kipi
@@ -72,4 +72,6 @@ rm -rf $RPM_BUILD_ROOT
 %files devel
 %defattr(644,root,root,755)
 %{_libdir}/lib*.so
+%{_libdir}/lib*.la
+%{_pkgconfigdir}/*.pc
 %{_includedir}/libkipi
