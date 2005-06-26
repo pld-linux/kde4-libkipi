@@ -10,6 +10,7 @@ Source0:	http://dl.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
 URL:		http://extragear.kde.org/apps/kipi.php
 BuildRequires:	autoconf
 BuildRequires:	automake
+BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.164
 BuildRequires:	unsermake >= 040805
