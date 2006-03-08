@@ -1,19 +1,19 @@
 Summary:	KDE Image Plugin Interface libary
 Summary(pl):	Biblioteka interfejsu przetwarzania obrazu w KDE
 Name:		libkipi
-Version:	0.1.1
+Version:	0.1.2
 Release:	1
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
-# Source0-md5:	395d87ad36b1261f58bdeac87145734c
-URL:		http://extragear.kde.org/apps/kipi.php
+# Source0-md5:	2fc68328b1331039861fca6f9354d635
+URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	autoconf
 BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.164
-BuildRequires:	unsermake >= 040805
+BuildRequires:	unsermake >= 051225
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -42,21 +42,23 @@ Pliki nag³ówkowe dla programistów u¿ywaj±cych libkipi.
 %build
 cp -f /usr/share/automake/config.sub admin
 export UNSERMAKE=/usr/share/unsermake/unsermake
-%{__make} -f admin/Makefile.common cvs
+%{__unsermake} -f admin/Makefile.common cvs
 
 %configure \
 	--with-qt-libraries=%{_libdir} \
 	--enable-final
 
-%{__make}
+%{__unsermake}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
+%{__unsermake} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
+
+rm -rf $RPM_BUILD_ROOT/usr/share/locale/is
 
 %find_lang %{name}
 
