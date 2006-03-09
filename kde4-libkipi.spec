@@ -13,7 +13,6 @@ BuildRequires:	automake
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.164
-BuildRequires:	unsermake >= 051225
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -41,19 +40,18 @@ Pliki nag³ówkowe dla programistów u¿ywaj±cych libkipi.
 
 %build
 cp -f /usr/share/automake/config.sub admin
-export UNSERMAKE=/usr/share/unsermake/unsermake
-%{__unsermake} -f admin/Makefile.common cvs
+%{__make} -f admin/Makefile.common cvs
 
 %configure \
 	--with-qt-libraries=%{_libdir} \
 	--enable-final
 
-%{__unsermake}
+%{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__unsermake} install \
+%{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
