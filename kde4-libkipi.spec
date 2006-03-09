@@ -28,6 +28,7 @@ Summary:	Header files for libkipi development
 Summary(pl):	Pliki nag³ówkowe dla programistów u¿ywaj±cych libkipi
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
+Requires:	kdelibs-devel >= 9:3.2.0
 
 %description devel
 Header files for libkipi development.
@@ -43,8 +44,9 @@ cp -f /usr/share/automake/config.sub admin
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
-	--with-qt-libraries=%{_libdir} \
-	--enable-final
+	--disable-rpath \
+	--enable-final \
+	--with-qt-libraries=%{_libdir}
 
 %{__make}
 
@@ -72,7 +74,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libkipi
