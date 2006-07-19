@@ -1,12 +1,12 @@
 Summary:	KDE Image Plugin Interface libary
 Summary(pl):	Biblioteka interfejsu przetwarzania obrazu w KDE
 Name:		libkipi
-Version:	0.1.2
+Version:	0.1.4
 Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
-# Source0-md5:	2fc68328b1331039861fca6f9354d635
+Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
+# Source0-md5:	2d8b8da064b85b0e53a98b4a7510392e
 URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	autoconf
 BuildRequires:	automake
