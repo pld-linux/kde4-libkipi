@@ -7,6 +7,8 @@ License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
 # Source0-md5:	2d8b8da064b85b0e53a98b4a7510392e
+Patch0:		kde-ac260.patch
+Patch1:		kde-common-LD_quote.patch
 URL:		http://extragear.kde.org/apps/kipi/
 BuildRequires:	autoconf
 BuildRequires:	automake
@@ -38,6 +40,8 @@ Pliki nag³ówkowe dla programistów u¿ywaj±cych libkipi.
 
 %prep
 %setup -q
+%patch0 -p1
+%patch1 -p1
 
 %build
 cp -f /usr/share/automake/config.sub admin
