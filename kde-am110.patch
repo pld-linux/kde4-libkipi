@@ -1,12 +1,11 @@
-diff -urN gtk-qt-engine-0.6/admin/cvs.sh gtk-qt-engine-0.6.new/admin/cvs.sh
---- gtk-qt-engine-0.6/admin/cvs.sh	2004-11-28 15:02:04.000000000 +0100
-+++ gtk-qt-engine-0.6.new/admin/cvs.sh	2006-11-16 20:03:01.824023500 +0100
+--- libkipi-0.1.4/admin/cvs.sh.orig	2006-12-18 20:47:36.000000000 +0100
++++ libkipi-0.1.4/admin/cvs.sh	2006-12-18 20:48:26.000000000 +0100
 @@ -68,7 +68,7 @@
      echo "*** KDE requires automake $required_automake_version"
      exit 1
      ;;
--  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9*) : ;;
-+  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9* | automake*1.10* ) : ;;
-   "" )
-     echo "*** AUTOMAKE NOT FOUND!."
-     echo "*** KDE requires automake $required_automake_version"
+-  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9*)
++  automake*1.6.* | automake*1.7* | automake*1.8* | automake*1.9* | automake*1.10* )
+     echo "*** $AUTOMAKE_STRING found."
+     UNSERMAKE=no
+     ;;
