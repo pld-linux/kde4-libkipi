@@ -1,19 +1,18 @@
 Summary:	KDE Image Plugin Interface libary
 Summary(pl):	Biblioteka interfejsu przetwarzania obrazu w KDE
 Name:		libkipi
-Version:	0.1.5
-Release:	2
+Version:	0.1.1
+Release:	1
 License:	LGPL
 Group:		Libraries
-Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
-# Source0-md5:	aef790871583444cd81bd9dea9c3fd0b
-URL:		http://extragear.kde.org/apps/kipi/
-Patch0:		kde-ac260-lt.patch
+Source0:	http://dl.sourceforge.net/digikam/%{name}-%{version}.tar.bz2
+# Source0-md5:	395d87ad36b1261f58bdeac87145734c
+URL:		http://extragear.kde.org/apps/kipi.php
 BuildRequires:	autoconf
 BuildRequires:	automake
-BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.164
+BuildRequires:	unsermake >= 040805
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,7 +28,6 @@ Summary:	Header files for libkipi development
 Summary(pl):	Pliki nag³ówkowe dla programistów u¿ywaj±cych libkipi
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
-Requires:	kdelibs-devel >= 9:3.2.0
 
 %description devel
 Header files for libkipi development.
@@ -37,32 +35,17 @@ Header files for libkipi development.
 %description devel -l pl
 Pliki nag³ówkowe dla programistów u¿ywaj±cych libkipi.
 
-%package static
-Summary:	Static libkipi library
-Summary(pl):	Biblioteka statyczna libkipi
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
-
-%description static
-Static libkipi library.
-
-%description static -l pl
-Biblioteka statyczna libkipi.
-
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-cp -f /usr/share/automake/config.sub admin
+cp -f %{_datadir}/automake/config.sub admin
+export UNSERMAKE=%{_datadir}/unsermake/unsermake
 %{__make} -f admin/Makefile.common cvs
 
 %configure \
-	--enable-shared \
-	--enable-static \
-	--disable-rpath \
-	--enable-final \
-	--with-qt-libraries=%{_libdir}
+	--with-qt-libraries=%{_libdir} \
+	--enable-final
 
 %{__make}
 
@@ -73,9 +56,7 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
-
-rm -rf $RPM_BUILD_ROOT/usr/share/locale/is
-
+	
 %find_lang %{name}
 
 %clean
@@ -90,11 +71,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
+%{_libdir}/lib*.so
 %{_libdir}/lib*.la
 %{_pkgconfigdir}/*.pc
 %{_includedir}/libkipi
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/lib*.a
