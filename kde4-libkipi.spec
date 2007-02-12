@@ -1,5 +1,5 @@
 Summary:	KDE Image Plugin Interface libary
-Summary(pl):	Biblioteka interfejsu przetwarzania obrazu w KDE
+Summary(pl.UTF-8):   Biblioteka interfejsu przetwarzania obrazu w KDE
 Name:		libkipi
 Version:	0.1.5
 Release:	2
@@ -20,13 +20,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Kipi (KDE Image Plugin Interface) is an effort to develop a common
 plugin structure for Digikam, KimDaBa, Showimg, and GwenView.
 
-%description -l pl
-Kipi to pr骲a stworzenia wsp髄nego modelu wtyczek dla aplikacji
+%description -l pl.UTF-8
+Kipi to pr贸ba stworzenia wsp贸lnego modelu wtyczek dla aplikacji
 graficznych KDE takich jak Digikam, KimDaBa, Showimg and Gwenview.
 
 %package devel
 Summary:	Header files for libkipi development
-Summary(pl):	Pliki nag丑wkowe dla programist體 u縴waj眂ych libkipi
+Summary(pl.UTF-8):   Pliki nag艂贸wkowe dla programist贸w u偶ywaj膮cych libkipi
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	kdelibs-devel >= 9:3.2.0
@@ -34,19 +34,19 @@ Requires:	kdelibs-devel >= 9:3.2.0
 %description devel
 Header files for libkipi development.
 
-%description devel -l pl
-Pliki nag丑wkowe dla programist體 u縴waj眂ych libkipi.
+%description devel -l pl.UTF-8
+Pliki nag艂贸wkowe dla programist贸w u偶ywaj膮cych libkipi.
 
 %package static
 Summary:	Static libkipi library
-Summary(pl):	Biblioteka statyczna libkipi
+Summary(pl.UTF-8):   Biblioteka statyczna libkipi
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Static libkipi library.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteka statyczna libkipi.
 
 %prep
