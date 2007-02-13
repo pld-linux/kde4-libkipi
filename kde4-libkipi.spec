@@ -1,5 +1,5 @@
 Summary:	KDE Image Plugin Interface libary
-Summary(pl.UTF-8):   Biblioteka interfejsu przetwarzania obrazu w KDE
+Summary(pl.UTF-8):	Biblioteka interfejsu przetwarzania obrazu w KDE
 Name:		libkipi
 Version:	0.1.5
 Release:	2
@@ -26,7 +26,7 @@ graficznych KDE takich jak Digikam, KimDaBa, Showimg and Gwenview.
 
 %package devel
 Summary:	Header files for libkipi development
-Summary(pl.UTF-8):   Pliki nagłówkowe dla programistów używających libkipi
+Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających libkipi
 Group:		Development/Libraries
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	kdelibs-devel >= 9:3.2.0
@@ -39,7 +39,7 @@ Pliki nagłówkowe dla programistów używających libkipi.
 
 %package static
 Summary:	Static libkipi library
-Summary(pl.UTF-8):   Biblioteka statyczna libkipi
+Summary(pl.UTF-8):	Biblioteka statyczna libkipi
 Group:		Development/Libraries
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
