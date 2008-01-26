@@ -2,7 +2,7 @@ Summary:	KDE Image Plugin Interface libary
 Summary(pl.UTF-8):	Biblioteka interfejsu przetwarzania obrazu w KDE
 Name:		libkipi
 Version:	0.1.5
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Libraries
 Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
@@ -74,12 +74,15 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
 
-rm -rf $RPM_BUILD_ROOT/usr/share/locale/is
+rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/is
 
 %find_lang %{name}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
+
+%post	-p /sbin/ldconfig
+%postun	-p /sbin/ldconfig
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
