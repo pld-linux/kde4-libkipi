@@ -3,14 +3,14 @@ Summary(pl.UTF-8):	Biblioteka interfejsu przetwarzania obrazu w KDE
 Name:		libkipi
 Version:	0.1.5
 Release:	3
-License:	LGPL
-Group:		Libraries
+License:	LGPL v2+
+Group:		X11/Libraries
 Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
 # Source0-md5:	aef790871583444cd81bd9dea9c3fd0b
-URL:		http://extragear.kde.org/apps/kipi/
 Patch0:		kde-ac260-lt.patch
-BuildRequires:	autoconf
-BuildRequires:	automake
+URL:		http://extragear.kde.org/apps/kipi/
+BuildRequires:	autoconf >= 2.53
+BuildRequires:	automake >= 1.6.1
 BuildRequires:	gettext-devel
 BuildRequires:	kdelibs-devel >= 9:3.2.0
 BuildRequires:	rpmbuild(macros) >= 1.164
@@ -27,8 +27,8 @@ graficznych KDE takich jak Digikam, KimDaBa, Showimg and Gwenview.
 %package devel
 Summary:	Header files for libkipi development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających libkipi
-Group:		Development/Libraries
-Requires:	%{name} = %{epoch}:%{version}-%{release}
+Group:		X11/Development/Libraries
+Requires:	%{name} = %{version}-%{release}
 Requires:	kdelibs-devel >= 9:3.2.0
 
 %description devel
@@ -40,8 +40,8 @@ Pliki nagłówkowe dla programistów używających libkipi.
 %package static
 Summary:	Static libkipi library
 Summary(pl.UTF-8):	Biblioteka statyczna libkipi
-Group:		Development/Libraries
-Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
+Group:		X11/Development/Libraries
+Requires:	%{name}-devel = %{version}-%{release}
 
 %description static
 Static libkipi library.
@@ -74,7 +74,8 @@ rm -rf $RPM_BUILD_ROOT
 	kde_htmldir=%{_kdedocdir} \
 	kde_libs_htmldir=%{_kdedocdir}
 
-rm -rf $RPM_BUILD_ROOT%{_datadir}/locale/is
+# empty
+rm -r $RPM_BUILD_ROOT%{_datadir}/locale/is
 
 %find_lang %{name}
 
