@@ -87,7 +87,8 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -f %{name}.lang
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so.?.?.?
+%attr(755,root,root) %{_libdir}/libkipi.so.?.?.?
+%attr(755,root,root) %ghost %{_libdir}/libkipi.so.?
 %{_datadir}/apps/kipi
 %{_datadir}/servicetypes/kipiplugin.desktop
 %{_iconsdir}/hicolor/*x*/*/*.*
