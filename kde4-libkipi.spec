@@ -1,35 +1,34 @@
-Summary:	KDE Image Plugin Interface libary
-Summary(pl.UTF-8):	Biblioteka interfejsu przetwarzania obrazu w KDE
+%define         _state          stable
+%define		orgname		libkipi
+%define         qtver           4.7.3
+
+Summary:	Kipi library
+Summary(pl.UTF-8):	Biblioteka kipi
 Name:		libkipi
-Version:	0.1.6
-Release:	4
-License:	LGPL v2+
+Version:	4.7.0
+Release:	1
+License:	GPL v2+
 Group:		X11/Libraries
-Source0:	http://dl.sourceforge.net/kipi/%{name}-%{version}.tar.bz2
-# Source0-md5:	6fd010aa8eab7039143f69543e806c65
-Patch0:		kde-ac260-lt.patch
-URL:		http://extragear.kde.org/apps/kipi/
-BuildRequires:	autoconf >= 2.53
-BuildRequires:	automake >= 1.6.1
-BuildRequires:	gettext-devel
-BuildRequires:	kdelibs-devel >= 9:3.2.0
+Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
+# Source0-md5:	7c512e305dac78bbaadff24d8d3f4742
+URL:		http://www.kde.org/
+BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
+Obsoletes:	kde4-libkipi
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-Kipi (KDE Image Plugin Interface) is an effort to develop a common
-plugin structure for Digikam, KimDaBa, Showimg, and GwenView.
+kipi library.
 
 %description -l pl.UTF-8
-Kipi to próba stworzenia wspólnego modelu wtyczek dla aplikacji
-graficznych KDE takich jak Digikam, KimDaBa, Showimg and Gwenview.
+Biblioteka kipi.
 
 %package devel
 Summary:	Header files for libkipi development
 Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających libkipi
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
-Requires:	kdelibs-devel >= 9:3.2.0
+Obsoletes:	kde4-libkipi-devel
 
 %description devel
 Header files for libkipi development.
@@ -37,66 +36,36 @@ Header files for libkipi development.
 %description devel -l pl.UTF-8
 Pliki nagłówkowe dla programistów używających libkipi.
 
-%package static
-Summary:	Static libkipi library
-Summary(pl.UTF-8):	Biblioteka statyczna libkipi
-Group:		X11/Development/Libraries
-Requires:	%{name}-devel = %{version}-%{release}
-
-%description static
-Static libkipi library.
-
-%description static -l pl.UTF-8
-Biblioteka statyczna libkipi.
-
 %prep
 %setup -q
-%patch0 -p1
 
 %build
-cp -f /usr/share/automake/config.sub admin
-%{__make} -f admin/Makefile.common cvs
-
-%configure \
-	--enable-shared \
-	--enable-static \
-	--disable-rpath \
-	--enable-final \
-	--with-qt-libraries=%{_libdir}
-
+install -d build
+cd build
+%cmake \
+	../
 %{__make}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%{__make} install \
-	DESTDIR=$RPM_BUILD_ROOT \
-	kde_htmldir=%{_kdedocdir} \
-	kde_libs_htmldir=%{_kdedocdir}
-
-%find_lang %{name}
+%{__make} -C build/ install \
+        DESTDIR=$RPM_BUILD_ROOT \
+        kde_htmldir=%{_kdedocdir}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
-%post	-p /sbin/ldconfig
-%postun	-p /sbin/ldconfig
-
-%files -f %{name}.lang
+%files
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/libkipi.so.?.?.?
 %attr(755,root,root) %ghost %{_libdir}/libkipi.so.?
+%attr(755,root,root) %{_libdir}/libkipi.so.*.*.*
 %{_datadir}/apps/kipi
-%{_datadir}/servicetypes/kipiplugin.desktop
-%{_iconsdir}/hicolor/*x*/*/*.*
+%{_iconsdir}/hicolor/*x*/apps/*.png
+%{_datadir}/kde4/servicetypes/kipiplugin.desktop
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
-%{_libdir}/lib*.la
-%{_pkgconfigdir}/*.pc
+%attr(755,root,root) %{_libdir}/libkipi.so
 %{_includedir}/libkipi
-
-%files static
-%defattr(644,root,root,755)
-%{_libdir}/lib*.a
+%{_pkgconfigdir}/libkipi.pc
