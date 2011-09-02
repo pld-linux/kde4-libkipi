@@ -5,12 +5,12 @@
 Summary:	Kipi library
 Summary(pl.UTF-8):	Biblioteka kipi
 Name:		libkipi
-Version:	4.7.0
+Version:	4.7.1
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	7c512e305dac78bbaadff24d8d3f4742
+# Source0-md5:	08ed8a97c28abc766aed1a337bd8087b
 URL:		http://www.kde.org/
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
