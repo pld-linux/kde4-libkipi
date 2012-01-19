@@ -1,16 +1,16 @@
 %define         _state          stable
 %define		orgname		libkipi
-%define         qtver           4.7.4
+%define         qtver           4.8.0
 
 Summary:	Kipi library
 Summary(pl.UTF-8):	Biblioteka kipi
 Name:		libkipi
-Version:	4.7.4
+Version:	4.8.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.bz2
-# Source0-md5:	570785645994e45a3c7eaa122cd1350e
+# Source0-md5:	b0a84b23a17b2b71cf143b896a77936d
 URL:		http://www.kde.org/
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
