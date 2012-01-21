@@ -4,7 +4,7 @@
 
 Summary:	Kipi library
 Summary(pl.UTF-8):	Biblioteka kipi
-Name:		libkipi
+Name:		kde4-libkipi
 Version:	4.8.0
 Release:	1
 License:	GPL v2+
@@ -14,7 +14,7 @@ Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version
 URL:		http://www.kde.org/
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
-Obsoletes:	kde4-libkipi < 4.6.99
+Obsoletes:	libkipi < 4.8.0
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
@@ -29,6 +29,7 @@ Summary(pl.UTF-8):	Pliki nagłówkowe dla programistów używających libkipi
 Group:		X11/Development/Libraries
 Requires:	%{name} = %{version}-%{release}
 Obsoletes:	kde4-kdegraphics-devel < 4.6.99
+Obsoletes:	libkipi-devel < 4.8.0
 
 %description devel
 Header files for libkipi development.
@@ -37,7 +38,7 @@ Header files for libkipi development.
 Pliki nagłówkowe dla programistów używających libkipi.
 
 %prep
-%setup -q
+%setup -q -n %{orgname}-%{version}
 
 %build
 install -d build
