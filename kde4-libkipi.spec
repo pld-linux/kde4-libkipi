@@ -5,12 +5,12 @@
 Summary:	Kipi library
 Summary(pl.UTF-8):	Biblioteka kipi
 Name:		kde4-libkipi
-Version:	4.12.3
+Version:	4.12.4
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	ftp://ftp.kde.org/pub/kde/%{_state}/%{version}/src/%{orgname}-%{version}.tar.xz
-# Source0-md5:	114040ff4f4d36c565b2b659b21e08c2
+# Source0-md5:	616446e23bb721b4cd14cc8c86a65e03
 URL:		http://www.kde.org/
 BuildRequires:	kde4-kdelibs-devel
 BuildRequires:	rpmbuild(macros) >= 1.164
